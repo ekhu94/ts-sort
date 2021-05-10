@@ -1,7 +1,17 @@
 export class NumbersCollection {
-  constructor(public data: number[], public length: number) {
-    this.length = this.data.length;
+  constructor(public data: number[]) {}
+
+  get length(): number {
+    return this.data.length;
   }
 
-  compare() {}
+  compare(leftIdx: number, rightIdx: number): boolean {
+    return this.data[leftIdx] > this.data[rightIdx];
+  }
+
+  swap(leftIdx: number, rightIdx: number): void {
+    const temp = this.data[leftIdx];
+    this.data[leftIdx] = this.data[rightIdx];
+    this.data[rightIdx] = temp;
+  }
 }

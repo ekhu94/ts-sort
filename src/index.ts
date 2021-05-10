@@ -4,14 +4,12 @@ class Sorter {
   sort(): void {
     const { collection } = this;
     for (let i = collection.length - 1; i > 0; i--) {
-      let j = 0;
-      while (j < i) {
+      for (let j = 0; j < i; j++) {
         if (collection[j] > collection[j + 1]) {
-          let temp = collection[j];
+          const temp = collection[j];
           collection[j] = collection[j + 1];
           collection[j + 1] = temp;
         }
-        j++;
       }
     }
   }

@@ -6,14 +6,12 @@ var Sorter = /** @class */ (function () {
     Sorter.prototype.sort = function () {
         var collection = this.collection;
         for (var i = collection.length - 1; i > 0; i--) {
-            var j = 0;
-            while (j < i) {
+            for (var j = 0; j < i; j++) {
                 if (collection[j] > collection[j + 1]) {
                     var temp = collection[j];
                     collection[j] = collection[j + 1];
                     collection[j + 1] = temp;
                 }
-                j++;
             }
         }
     };

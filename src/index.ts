@@ -1,7 +1,7 @@
 const femaleTitan = 'annie';
 
-const printString = (str: string): void => {
-  console.log(str);
+const printCulprit = (str: string): void => {
+  console.log(`The titan we are after is: ${str}!`);
 };
 
-printString(femaleTitan);
+printCulprit(femaleTitan);

@@ -32,7 +32,7 @@ var CharactersCollection = /** @class */ (function (_super) {
         configurable: true
     });
     CharactersCollection.prototype.compare = function (leftIdx, rightIdx) {
-        return this.data[leftIdx].toLowerCase() > this.data[rightIdx].toLowerCase();
+        return this.data[leftIdx] > this.data[rightIdx];
     };
     CharactersCollection.prototype.swap = function (leftIdx, rightIdx) {
         var chars = this.data.split('');

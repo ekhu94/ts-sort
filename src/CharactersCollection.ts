@@ -10,7 +10,7 @@ export class CharactersCollection extends Sorter {
   }
 
   compare(leftIdx: number, rightIdx: number): boolean {
-    return this.data[leftIdx].toLowerCase() > this.data[rightIdx].toLowerCase();
+    return this.data[leftIdx] > this.data[rightIdx];
   }
 
   swap(leftIdx: number, rightIdx: number): void {

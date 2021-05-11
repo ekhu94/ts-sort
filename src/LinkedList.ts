@@ -2,22 +2,17 @@ import { Sorter } from './Sorter';
 
 class Node {
   next: Node | null = null;
-
   constructor(public data: number) {}
 }
 
 export class LinkedList extends Sorter {
-  head: null | Node = null;
-
-  //! not necessary if no constructor was initially defined
-  //   constructor() {
-  //     super();
-  //   }
+  head: Node | null = null;
 
   get length(): number {
-    let count = 0;
+    if (!this.head) return 0;
+    let count = 1;
     let node = this.head;
-    while (node) {
+    while (node.next) {
       count++;
       node = node.next;
     }
@@ -38,29 +33,26 @@ export class LinkedList extends Sorter {
 
   at(idx: number): Node {
     if (!this.head) {
-      throw new Error('Index out of bounds');
+      throw new Error('Index is not valid');
     }
     let i = 0;
     let node: Node | null = this.head;
     while (node) {
-      if (idx === i) return node;
+      if (i === idx) return node;
       i++;
       node = node.next;
     }
-    throw new Error('Index out of bounds');
+    throw new Error('Index is not valid');
   }
 
   compare(left: number, right: number): boolean {
-    if (this.length < 2) {
-      throw new Error('List length is too short');
-    }
     return this.at(left).data > this.at(right).data;
   }
 
   swap(left: number, right: number): void {
-    const leftNode = this.at(left);
-    const rightNode = this.at(right);
-    const temp = this.at(left).data;
+    let leftNode = this.at(left);
+    let rightNode = this.at(right);
+    const temp = leftNode.data;
     leftNode.data = rightNode.data;
     rightNode.data = temp;
   }

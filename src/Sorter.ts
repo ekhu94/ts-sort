@@ -1,9 +1,3 @@
-// interface Sortable {
-//   length: number;
-//   compare(left: number, right: number): boolean;
-//   swap(left: number, right: number): void;
-// }
-
 export abstract class Sorter {
   abstract length: number;
   abstract compare(left: number, right: number): boolean;

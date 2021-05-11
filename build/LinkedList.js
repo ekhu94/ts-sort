@@ -32,14 +32,12 @@ var LinkedList = /** @class */ (function (_super) {
         return _this;
     }
     Object.defineProperty(LinkedList.prototype, "length", {
-        //! not necessary if no constructor was initially defined
-        //   constructor() {
-        //     super();
-        //   }
         get: function () {
-            var count = 0;
+            if (!this.head)
+                return 0;
+            var count = 1;
             var node = this.head;
-            while (node) {
+            while (node.next) {
                 count++;
                 node = node.next;
             }
@@ -61,28 +59,25 @@ var LinkedList = /** @class */ (function (_super) {
     };
     LinkedList.prototype.at = function (idx) {
         if (!this.head) {
-            throw new Error('Index out of bounds');
+            throw new Error('Index is not valid');
         }
         var i = 0;
         var node = this.head;
         while (node) {
-            if (idx === i)
+            if (i === idx)
                 return node;
             i++;
             node = node.next;
         }
-        throw new Error('Index out of bounds');
+        throw new Error('Index is not valid');
     };
     LinkedList.prototype.compare = function (left, right) {
-        if (this.length < 2) {
-            throw new Error('List length is too short');
-        }
         return this.at(left).data > this.at(right).data;
     };
     LinkedList.prototype.swap = function (left, right) {
         var leftNode = this.at(left);
         var rightNode = this.at(right);
-        var temp = this.at(left).data;
+        var temp = leftNode.data;
         leftNode.data = rightNode.data;
         rightNode.data = temp;
     };

@@ -1,11 +1,18 @@
+import { Sorter } from './Sorter';
+
 class Node {
   next: Node | null = null;
 
   constructor(public data: number) {}
 }
 
-export class LinkedList {
+export class LinkedList extends Sorter {
   head: null | Node = null;
+
+  //! not necessary if no constructor was initially defined
+  //   constructor() {
+  //     super();
+  //   }
 
   get length(): number {
     let count = 0;

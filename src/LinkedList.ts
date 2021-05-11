@@ -51,9 +51,11 @@ export class LinkedList {
   }
 
   swap(left: number, right: number): void {
-    const temp = this.at(left);
-    this.at(left).data = this.at(right).data;
-    this.at(right).data = temp.data;
+    const leftNode = this.at(left);
+    const rightNode = this.at(right);
+    const temp = this.at(left).data;
+    leftNode.data = rightNode.data;
+    rightNode.data = temp;
   }
 
   print(): void {

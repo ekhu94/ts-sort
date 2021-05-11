@@ -4,15 +4,16 @@ interface Sortable {
   swap(left: number, right: number): void;
 }
 
-export class Sorter {
-  constructor(public collection: Sortable) {}
+export abstract class Sorter {
+  abstract length: number;
+  abstract compare(left: number, right: number): boolean;
+  abstract swap(left: number, right: number): void;
 
   sort(): void {
-    const { collection } = this;
-    for (let i = collection.length - 1; i > 0; i--) {
+    for (let i = this.length - 1; i > 0; i--) {
       for (let j = 0; j < i; j++) {
-        if (collection.compare(j, j + 1)) {
-          collection.swap(j, j + 1);
+        if (this.compare(j, j + 1)) {
+          this.swap(j, j + 1);
         }
       }
     }
